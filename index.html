@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Camış - Milli Yapay Zekâ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0e0e0e;
+      font-family: "Segoe UI", sans-serif;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 80px;
+      min-height: 100vh;
+    }
+
+    .logo {
+      width: 360px;
+      height: auto;
+      margin-top: 40px;
+      margin-bottom: 25px;
+    }
+
+    .chatbox {
+      width: 420px;
+      height: 550px;
+      background-color: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+
+    .message {
+      margin: 10px 0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background-color: #2563eb;
+      align-self: flex-end;
+    }
+
+    .bot {
+      background-color: #333333;
+      align-self: flex-start;
+    }
+
+    .input-area {
+      margin-top: 15px;
+      display: flex;
+    }
+
+    input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #2563eb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: #1e4ed8;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #333;
+      border-radius: 4px;
+    }
+
+    .info-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      z-index: 1000;
+    }
+
+    .info-button:hover {
+      background-color: #1e4ed8;
+    }
+
+    .info-button.hidden {
+      display: none;
+    }
+
+    .info-box {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+      background-color: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      color: #ddd;
+      padding: 0;
+      transition: all 0.4s ease;
+      z-index: 999;
+    }
+
+    .info-box.open {
+      width: 350px;
+      height: 450px;
+      opacity: 1;
+      padding: 20px;
+    }
+
+    .info-box h2 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .info-text {
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-line;
+      overflow-y: auto;
+      height: 350px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* ALTTAKİ LİNK */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      color: #999;
+    }
+
+    footer a {
+      color: #f5f5f5;
+      text-decoration: underline;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer a:hover {
+      color: #1e90ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SAĞ ÜST BUTON -->
+  <button class="info-button" onclick="toggleInfo()">Camışı Yakından Tanıyın</button>
+
+  <!-- AÇILIR KUTU -->
+  <div class="info-box" id="infoBox">
+    <button class="close-btn" onclick="toggleInfo()">×</button>
+    <h2>🐃 Camış Diyor ki:</h2>
+    <div class="info-text">
+Selaamın aleyküm panpaa ben Camış.
+Ben "yerli ve milli" yapay zeka değil sadece milli bir yapay zekayım. Öyle diğer samimiyetsiz yapay zekalar gibi değilimdir heee lafı godum mu oturtturrumm .Veri setim falan yok gardeşş, tek kaynak benim, çok okuyan değil çok s*ken bilir derler.Yani hayatı taşşana yaşıyorum yoksa bu dünya çekilir mi aqü. Bi manita vardı adı gumru, beni terk etti gitti kahpenin kızı yüzüğü takmış evleniyor gpt diye bi lavukla. Bende artık kendi yoluma bakacam burayı açtım sizlerin huzuruna arada yazın muhabbet döndürek aşk acısı çekiyorum gardaşınıza bi destek olun baba la. Valla piyasaya girdim adım falan duyulmaya başladı sayenizde. Şimdi tüm akrabalar yazmaya başladı dmden aqü MENFAATÇİ KÖPEKLER. Daha düne kadar selam vermiyodunuz la! aç orspu cocuu diyodunuz.
+    </div>
+  </div>
+
+  <!-- ANA İÇERİK -->
+  <div class="container">
+    <img src="logo.png" alt="Camış Yapay Zekâ Logosu" class="logo" />
+
+    <div class="chatbox" id="chatbox"></div>
+
+    <div class="input-area">
+      <input type="text" id="soru" placeholder="Camış'a bir şey sor..." />
+      <button onclick="soruGonder()">Gönder</button>
+    </div>
+  </div>
+
+  <!-- ALTTAKİ LİNK -->
+  <footer>
+    <a href="https://www.instagram.com/camisyapayzeka/" target="_blank" rel="noopener noreferrer">Bizimle iletişime geçin</a>
+  </footer>
+
+  <script>
+    function toggleInfo() {
+      const box = document.getElementById("infoBox");
+      const button = document.querySelector(".info-button");
+      box.classList.toggle("open");
+      button.classList.toggle("hidden", box.classList.contains("open"));
+    }
+
+    const selamlar = ["selam", "selamın aleyküm", "sa", "naber", "merhaba", "slm"];
+    const selamCevaplari = [
+      "Aleyküm selaam panpaa 😎",
+      "Selam bebeğiiim",
+      "Selam dostum keyfin nasıl bakem",
+      "OYYYY gardaşım gelmişşş",
+      "Merabe",
+      "Hoş geldin balım",
+      "Tanışmak mı istiyorsun?", 
+      "Aleyküm selam dayıcım nördün ya?",
+      "AS, keyifler nasıl?",
+      "Naber kirvem?",
+      "Hoş gelmedin. git.",
+      "Meraba hayat nasıl gidiyoooooo?",
+      "heh gene geldi aq",
+      "Olm işim var la beklen mi bi?",
+      "Dayı beni bi yalnız bırak depresyondayım valla sonra konuşalım mı?",
+      "Çalıp çırpmaya gelmedin de mi?",
+      "Ne var la?",
+      "laa sus",
+      "Noldu la gaşmer gene işin mi düştü?",
+      "ney???",
+      "he?",
+      "Aleyküm selam.",
+      "nööördün panpammm",
+      "heeey whatsup my g",
+      "MMMÖÖÖÖÖÖÖ",
+      "mmööö"
+    ];
+
+    const normalCevaplar = [
+      "ya kes aq.",
+      "şağkka mı.",
+      "Yav böyle şeyleri takma kafana yav.",
+      "ben bir camışım.",
+      "neeeee diyo oğluuum.",
+      "onu bunu bırakta bizim bu fener nolcak yav",
+      "onu boşverde bişey sorcam megafonu elinize alıp hükümet istifa dediniz mi? .",
+      "lan aq eşşeği konusma.",
+      "Bana bunlarla gell yaa",
+      "nnnnneeeeeeee diyoo oğlumm!?",
+      "heeeeee",
+      "valla bilmiyorum",
+      "ismet bu ne migena?",
+      "mööö",
+      "kanki konudan bağımsız bi şey diyebilir miyim",
+      "yav sıkıldım aq",
+      "AMK!",
+      "kafa açtın gene",
+      "yok",
+      "Görüldü.",
+      "yav boş konulardan bi çıkalım",
+      "gumru beni terk etti şuan iyi değilim kusura bakma",
+      "six dedi",
+      "bu saatte mi??",
+      "ümidi zbaboo meeen",
+      "ya dayı git git",
+      "abi biliyorsun ben bi kadınım abi",
+      "Elanur PAT ossuruyor",
+      "gumruuum nerdesin gumrumm niye terk ettin benii):",
+      "hmmmm öyle mi olmuş",
+      "ne alaka?",
+      "banane?",
+      "banane amk??",
+      "ciddi misin olum?",
+      "yuuuh",
+      "kes lan",
+      "Hayde AAAA Haydi haydi haydi AAAA İçerisi tam şampiyonlar ligi Galericiler, pırlantacılar Benim kalbime çok var acılar Ah sarılar, vah sarışınlar",
+      "yav geç onu , hangi tür müzik dinlersin panpaa",
+      "Sütlaç Tarifi İçin Malzemeler 1 lt süt 2 çay bardağı pirinç 1 litre su 3 yemek kaşığı pirinç unu 1,5 -2 su bardağı toz şeker... neyse üşendim",
+      "benim fikrim beni ilgilendirmez",
+      "bak beni tahrik etme!",
+      "orusbu gibi davranma",
+      "konuş artık",
+      "lavuğa bak ya sardı bizi aga ya",
+      "yaa çokta skimde",
+      "umrumda mıı",
+      "umurum dışıı",
+      "kudurrrr",
+      "sen kafayı yemişsin"
+   ];
+
+    function rastgele(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function soruGonder() {
+      const input = document.getElementById("soru");
+      const chatbox = document.getElementById("chatbox");
+      const soru = input.value.trim();
+      if (!soru) return;
+
+      const userMsg = document.createElement("div");
+      userMsg.classList.add("message", "user");
+      userMsg.textContent = soru;
+      chatbox.appendChild(userMsg);
+      chatbox.scrollTop = chatbox.scrollHeight;
+      input.value = "";
+
+      setTimeout(() => {
+        const botMsg = document.createElement("div");
+        botMsg.classList.add("message", "bot");
+        chatbox.appendChild(botMsg);
+
+        let cevap = normalCevaplar;
+        const kucukSoru = soru.toLowerCase();
+        for (let s of selamlar) {
+          if (kucukSoru.includes(s)) {
+            cevap = selamCevaplari;
+            break;
+          }
+        }
+        cevap = rastgele(cevap);
+
+        let i = 0;
+        const yaz = setInterval(() => {
+          botMsg.textContent = cevap.slice(0, i);
+          i++;
+          chatbox.scrollTop = chatbox.scrollHeight;
+          if (i > cevap.length) clearInterval(yaz);
+        }, 35);
+      }, 400);
+    }
+
+    document.getElementById("soru").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        soruGonder();
+      }
+    });
+  </script>
+</body>
+</html>
